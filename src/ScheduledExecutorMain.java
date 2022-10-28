@@ -12,22 +12,28 @@ import java.util.concurrent.TimeUnit;
  * @author <a href="mailto:everton.cavalcante@ufrn.br">Everton Cavalcante</a>
  */
 public class ScheduledExecutorMain {
+	/** Delay in seconds prior starting a task */
+	private static final int START_DELAY = 5;
+
+	/** Time to periodically execute a task */
+	private static final int CYCLE_TIME = 3;
+
 	/**
 	 * Main method
 	 * @param args Command line arguments
 	 */
 	public static void main(String[] args) {
-		Runnable task = new Task("T");
+		Runnable task1 = new Task("T1");
+		Runnable task2 = new Task("T2");
+
 		ScheduledExecutorService executor =
-			Executors.newSingleThreadScheduledExecutor();
-		
-		ScheduledFuture<?> result = 
-			executor.schedule(task, 5, TimeUnit.SECONDS);
-		result = executor.scheduleAtFixedRate(task, 0, 3, TimeUnit.SECONDS);
-		try {
-			System.out.println(result.get());
-		} catch (InterruptedException | ExecutionException e) {
-			e.printStackTrace();
-		}
+				Executors.newSingleThreadScheduledExecutor();
+
+		// Execution of the task after 5 seconds
+		executor.schedule(task1, START_DELAY, TimeUnit.SECONDS);
+
+		// Execution of the task at each 3 seconds, starting immediately
+		executor.scheduleAtFixedRate(task2, 0, CYCLE_TIME,
+				TimeUnit.SECONDS);
 	}
 }

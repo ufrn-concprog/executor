@@ -20,13 +20,5 @@ public class Task implements Runnable {
 	@Override
 	public void run() {
 		System.out.println("Task " + id + " executing");
-		try {
-			// Thread is suspended by a random time interval to
-			// simulate waiting time
-			int duration = (int) (Math.random() * 5) + 1;
-			Thread.sleep(duration * 1000L);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 }

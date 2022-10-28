@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author <a href="mailto:everton.cavalcante@ufrn.br">Everton Cavalcante</a>
  */
-public class ExecutorService {
+public class ExecutorServiceMain {
     /**
      * Main method
      * @param args Command line arguments
